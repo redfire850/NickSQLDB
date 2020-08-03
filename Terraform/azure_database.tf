@@ -7,21 +7,21 @@ resource "random_string" "random-name" {
 }
 
 resource "azurerm_sql_server" "demo" {
-  name                         = __sqlservername__
+  name                         = "myterraformsqldb1968"
   resource_group_name          = azurerm_resource_group.demoSQLrg.name
   location                     = azurerm_resource_group.demoSQLrg.location
   version                      = "12.0"
-  administrator_login          = __sqlserveruser__
-  administrator_login_password = __sqlserverpassword__
+  administrator_login          = "demouser"
+  administrator_login_password = "supersix1234"
 }
 
 #resource "azurerm_sql_server" "demo-secondary" {
-#  name                         = __sqlservername__
+#  name                         = "myterraformsqldb1968"
 #  resource_group_name          = azurerm_resource_group.demoSQLrg.name
 #  location                     = var.failover_location
 #  version                      = "12.0"
-#  administrator_login          = __sqlserveruser__
-#  administrator_login_password = __sqlserverpassword__
+#  administrator_login          = "demouser"
+#  administrator_login_password = "supersix1234"
 #}
 
 #resource "azurerm_sql_failover_group" "failover" {
@@ -41,7 +41,7 @@ resource "azurerm_sql_server" "demo" {
 #}
 
 resource "azurerm_sql_database" "training" {
-  name                             = __sqlserverdatabasename__
+  name                             = "demodb"
   resource_group_name              = azurerm_resource_group.demoSQLrg.name
   location                         = azurerm_resource_group.demoSQLrg.location
   server_name                      = azurerm_sql_server.demo.name
