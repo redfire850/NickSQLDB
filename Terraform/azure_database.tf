@@ -7,12 +7,12 @@ resource "random_string" "random-name" {
 }
 
 resource "azurerm_sql_server" "demo" {
-  name                         = "__sqlservername__"
+  name                         = __sqlservername__
   resource_group_name          = azurerm_resource_group.demoSQLrg.name
   location                     = azurerm_resource_group.demoSQLrg.location
   version                      = "12.0"
-  administrator_login          = "__sqlserveruser__"
-  administrator_login_password = "__sqlserverpassword__"
+  administrator_login          = __sqlserveruser__
+  administrator_login_password = __sqlserverpassword__
 }
 
 #resource "azurerm_sql_server" "demo-secondary" {

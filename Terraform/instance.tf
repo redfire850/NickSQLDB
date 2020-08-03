@@ -24,8 +24,8 @@ resource "azurerm_virtual_machine" "demo-sql-instance" {
   }
   os_profile {
     computer_name  = "demo-sql-instance"
-    admin_username = "__sqlserveruser__"
-    admin_password = "__sqlserverpassword__"
+    admin_username = __sqlserveruser__
+    admin_password = __sqlserverpassword__
   }
   os_profile_linux_config {
     disable_password_authentication = true
