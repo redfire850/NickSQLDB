@@ -12,7 +12,7 @@ resource "azurerm_sql_server" "demo" {
   location                     = azurerm_resource_group.demoSQLrg.location
   version                      = "12.0"
   administrator_login          = "demouser"
-  administrator_login_password = "supersix1234"
+  administrator_login_password = "Supersix%1234"
 }
 
 #resource "azurerm_sql_server" "demo-secondary" {
@@ -21,7 +21,7 @@ resource "azurerm_sql_server" "demo" {
 #  location                     = var.failover_location
 #  version                      = "12.0"
 #  administrator_login          = "demouser"
-#  administrator_login_password = "supersix1234"
+#  administrator_login_password = "Supersix%1234"
 #}
 
 #resource "azurerm_sql_failover_group" "failover" {
