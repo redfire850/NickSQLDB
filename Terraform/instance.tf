@@ -31,7 +31,7 @@ resource "azurerm_virtual_machine" "demo-sql-instance" {
     disable_password_authentication = true
     ssh_keys {
       key_data = file("mykey.pub")
-      path     = "/home/demo/.ssh/authorized_keys"
+      path     = "/home/demouser/.ssh/authorized_keys"
     }
   }
 }
