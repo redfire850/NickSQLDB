@@ -15,30 +15,30 @@ resource "azurerm_sql_server" "demo" {
   administrator_login_password = __sqlserverpassword__
 }
 
-resource "azurerm_sql_server" "demo-secondary" {
-  name                         = __sqlservername__
-  resource_group_name          = azurerm_resource_group.demoSQLrg.name
-  location                     = var.failover_location
-  version                      = "12.0"
-  administrator_login          = __sqlserveruser__
-  administrator_login_password = __sqlserverpassword__
-}
+#resource "azurerm_sql_server" "demo-secondary" {
+#  name                         = __sqlservername__
+#  resource_group_name          = azurerm_resource_group.demoSQLrg.name
+#  location                     = var.failover_location
+#  version                      = "12.0"
+#  administrator_login          = __sqlserveruser__
+#  administrator_login_password = __sqlserverpassword__
+#}
 
-resource "azurerm_sql_failover_group" "failover" {
-  name                = "sqlserver-failover-group-${random_string.random-name.result}"
-  resource_group_name = azurerm_resource_group.demoSQLrg.name
-  server_name         = azurerm_sql_server.demo.name
-  databases           = [azurerm_sql_database.training.id]
+#resource "azurerm_sql_failover_group" "failover" {
+#  name                = "sqlserver-failover-group-${random_string.random-name.result}"
+#  resource_group_name = azurerm_resource_group.demoSQLrg.name
+#  server_name         = azurerm_sql_server.demo.name
+#  databases           = [azurerm_sql_database.training.id]
 
-  partner_servers {
-    id = azurerm_sql_server.demo-secondary.id
-  }
+#  partner_servers {
+#    id = azurerm_sql_server.demo-secondary.id
+#  }
 
-  read_write_endpoint_failover_policy {
-    mode          = "Automatic"
-    grace_minutes = 60
-  }
-}
+#  read_write_endpoint_failover_policy {
+#    mode          = "Automatic"
+#    grace_minutes = 60
+#  }
+#}
 
 resource "azurerm_sql_database" "training" {
   name                             = __sqlserverdatabasename__
